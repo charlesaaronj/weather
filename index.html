@@ -3,21 +3,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css">
   <link rel="stylesheet" href="styles.css">
-  <title>Ninja Weather</title>
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+ 
+  <title>Disney Parks Weather</title>
 </head>
 <body>
 
-    <div class="container my-5 mx-auto">
+    <!-- <div class="container my-5 mx-auto"> -->
 
-        <h1 class="text-muted text-center my-4">Weather Ninja</h1>
+        <!-- <h1 class="text-muted text-center my-4">Disney Parks Weather</h1>
     
         <form class="change-location my-4 text-center text-muted">
           <label for="city">Enter a location for weather information</label>
           <input type="text" name="city" class="form-control p-4">
-        </form>
-        
+        </form> -->
+<!--         
         <div class="card shadow-lg rounded d-none">
           <img src="https://via.placeholder.com/400x300" class="time card-img-top">
           <div class="icon bg-light mx-auto text-center">
@@ -33,8 +35,53 @@
           </div>
         </div>
         <div class="my-3 text-center no">Location not found!</div>
-      </div> 
+      </div>  -->
   
+
+      <section class="reach section mx-6 pt-3 ">
+        <div class="container has-text-centered">
+          <h1 class="title"><a id="contact"></a>Interested in anything above?</h1>
+          <h2 class="subtitle my-1">
+            I'd like to hear from you...
+          </h2>
+        </div>
+        <div class="columns pt-5">
+          <div class="column is-three-fifths is-offset-one-fifth">
+  
+          
+      <div class="field">
+        <form class="form" id="my-form" action="" method="POST">
+        <label class="label">Disney Resort</label>
+        <div class="control">
+          <label class="radio">
+            <div><input type="radio" name="rsvp">Walt Disney World
+          </label></div>
+          <label class="radio">
+            <div><input type="radio" name="rsvp">Disneyland
+          </label></div>
+          <label class="radio">
+            <div><input type="radio" name="rsvp">Shanghai Disneyland
+          </label></div>
+          <label class="radio">
+            <div><input type="radio" name="rsvp">Tokyo Disneyland
+          </label></div>
+          <label class="radio">
+            <div><input type="radio" name="rsvp">Hong Kong Disneyland
+          </label></div>
+          <label class="radio">
+            <div><input type="radio" name="rsvp">Disneyland Paris
+          </label></div>
+      <div class="field is-grouped my-3">
+        <div class="control">
+          <button class="button is-link" id="my-form-button">Get Weather</button>
+        </div>
+          <p id="my-form-status"></p>
+      </form>
+      </div>
+    </div>
+  </div>
+    </section>
+
   <script src="scripts/forecast.js"></script>
   <script src="scripts/app.js"></script>
 </body>

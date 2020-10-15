@@ -24,7 +24,7 @@ class Forecast {
             const data = await response.json();
             //taking the first element from the array of data (closest match)
             console.log('API call returns city key associated to city name')
-            return data[0];
+            return data;
         }
         async getWeather(id){
     
@@ -38,6 +38,7 @@ class Forecast {
             return data[0];
         }
     }
+
 
 
 // const apiKey = 'mRoY47MbBZ4snv1ND35KgnWXafVI5ImR';

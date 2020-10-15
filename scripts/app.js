@@ -1,6 +1,6 @@
 const forecast = new Forecast();
     
-
+console.log(forecast);
 
 
 const cityForm = document.querySelector('form');
