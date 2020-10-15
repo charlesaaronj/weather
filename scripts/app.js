@@ -1,18 +1,19 @@
-//get form using class "form"
+const forecast = new Forecast();
+    
+
+
+
 const cityForm = document.querySelector('form');
-//get 
 const card = document.querySelector('.card');
 const details = document.querySelector('.details');
 const time = document. querySelector('img.time');
 const icon = document.querySelector('.icon img');
 const notFound = document.querySelector('.no');
 
-
-
-
+//4 - update the UI with this function
 const updateUI = (data) => {
 
-  //destructure properties
+  //destructure the data - stores each data type in the same const name
 
     const {cityDets, weather} = data;
 
@@ -43,25 +44,31 @@ if (card.classList.contains('d-none')){
     card.classList.remove('d-none');
 }
 };
-//takes city value user types in on form
-const updateCity = async (city) => {
-    //returns promise so use await
-    //can can from app.js because file is in html before forecast.js
-    const cityDets = await getCity(city);
-    const weather = await getWeather(cityDets.Key);
-//returns object
-    return { cityDets, weather };
-};
-//add listener to form submit event - first task 
+//2 - takes city value user types in on form
+// const updateCity = async (city) => {
+//     console.log('User searched for city: ' + (city));
+//     //returns promise so use await
+//     //functions in forecast.js - comes before app.js in HTML
+//     const cityDets = await getCity(city);
+//     const weather = await getWeather(cityDets.Key);
+//     //returns object with the city details and weather
+//     console.log('Conditions returned: City Details and Weather')
+//     //use object shorthand to shorten weather: weather
+//     return { cityDets, weather };
+// };
+//1 - add listener to form submit event
 cityForm.addEventListener('submit', e => {
     e.preventDefault();
-    //get value from 'city' field
+    //get value typed in from 'city' field
     const city = cityForm.city.value.trim();
     cityForm.reset();
 
-    //update UI with new city
-    updateCity(city)
+// 3 - update UI with city typed in
+//getWeather returns a promise so we can use .then
+    forecast.updateCity(city)
     .then(data => {
+        console.log(data);
+        //call updateUI function
         updateUI(data);
         notFound.style.display = 'none';
 
@@ -78,14 +85,14 @@ cityForm.addEventListener('submit', e => {
     
 });
 
-if(localStorage.getItem('city')){
-    updateCity(localStorage.getItem('city'))
-    .then(data => {
-        updateUI(data)
-    })
-    .catch(err => console.log(err));
+// if(localStorage.getItem('city')){
+//     forecast.updateCity(localStorage.getItem('city'))
+//     .then(data => {
+//         updateUI(data)
+//     })
+//     .catch(err => console.log(err));
 
-    };
+//     };
 
 
 
