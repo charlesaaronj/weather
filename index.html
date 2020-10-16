@@ -9,79 +9,59 @@
  
   <title>Disney Parks Weather</title>
 </head>
-<body>
+<body class="has-background-warning">
 
-    <!-- <div class="container my-5 mx-auto"> -->
-
-        <!-- <h1 class="text-muted text-center my-4">Disney Parks Weather</h1>
-    
-        <form class="change-location my-4 text-center text-muted">
-          <label for="city">Enter a location for weather information</label>
-          <input type="text" name="city" class="form-control p-4">
-        </form> -->
-<!--         
-        <div class="card shadow-lg rounded d-none">
-          <img src="https://via.placeholder.com/400x300" class="time card-img-top">
-          <div class="icon bg-light mx-auto text-center">
-            <img src="" alt="">
-          </div>
-          <div class="text-muted text-uppercase text-center details">
-            <h5 class="my-3">City name</h5>
-            <div class="my-3">Weather condition</div>
-            <div class="display-4 my-4">
-              <span>temp</span>
-              <span>&deg;C</span>
-            </div>
-          </div>
-        </div>
-        <div class="my-3 text-center no">Location not found!</div>
-      </div>  -->
-  
-
-      <section class="reach section mx-6 pt-3 ">
-        <div class="container has-text-centered">
-          <h1 class="title"><a id="contact"></a>Interested in anything above?</h1>
-          <h2 class="subtitle my-1">
-            I'd like to hear from you...
-          </h2>
-        </div>
-        <div class="columns pt-5">
-          <div class="column is-three-fifths is-offset-one-fifth">
-  
-          
+ <div class ="container has-text-centered">
+   <div class="columns">
+     <div class="column">
+    <div class="mx-3">
+    <div class="is-size-3 pt-6">Disney Parks Weather</div>
       <div class="field">
         <form class="form" id="my-form" action="" method="POST">
-        <label class="label">Disney Resort</label>
-        <div class="control">
+        <label class="label my-5">Select a Disney Resort:</label>
+        <!-- <div class="control">
           <label class="radio">
-            <div><input type="radio" name="rsvp">Walt Disney World
+            <div class="my-3"><input type="radio" name="rsvp" value="2257551"> Walt Disney World
           </label></div>
           <label class="radio">
-            <div><input type="radio" name="rsvp">Disneyland
+            <div class="my-3"><input type="radio" name="rsvp" value="327150"> Disneyland
           </label></div>
           <label class="radio">
-            <div><input type="radio" name="rsvp">Shanghai Disneyland
+            <div class="my-3"><input type="radio" name="rsvp" value="3424999"> Shanghai Disneyland
           </label></div>
           <label class="radio">
-            <div><input type="radio" name="rsvp">Tokyo Disneyland
+            <div class="my-3"><input type="radio" name="rsvp" value="216947"> Tokyo Disneyland
           </label></div>
           <label class="radio">
-            <div><input type="radio" name="rsvp">Hong Kong Disneyland
+            <div class="my-3"><input type="radio" name="rsvp" value="1123451"> Hong Kong Disneyland
           </label></div>
           <label class="radio">
-            <div><input type="radio" name="rsvp">Disneyland Paris
-          </label></div>
-      <div class="field is-grouped my-3">
-        <div class="control">
-          <button class="button is-link" id="my-form-button">Get Weather</button>
+            <div class="my-3"><input type="radio" name="rsvp" value="154118"> Disneyland Paris
+          </label></div> -->
+          <div class="level">
+            <div class="level-left">
+          <div class="select is-medium">
+          <select id="select"> 
+              <option value="2257551">Walt Disney World</option>
+              <option value="327150">Disneyland</option>
+              <option value="3424999">Shanghai Disneyland</option>
+              <option value="216947">Tokyo Disneyland</option>
+              <option value="1123451">Hong Kong Disneyland</option>
+              <option value="154118">Disneyland Paris</option>
+            </select>
+          </div>
+          <button class="button is-medium" id="my-form-button">Go</button>
         </div>
-          <p id="my-form-status"></p>
-      </form>
+        </div>
       </div>
     </div>
+    </div>
   </div>
-    </section>
-
+        </form>
+      
+      <div class="details"></div>
+      <div class="time"></div>
+  </div>
   <script src="scripts/forecast.js"></script>
   <script src="scripts/app.js"></script>
 </body>
