@@ -1,18 +1,6 @@
-body{
-    background: #f0f0f0;
-    letter-spacing: 0.2em;
-    font-size: 0.8em;
-  }
-  .container{
-    max-width: 400px;
-  }
-.icon{
-    position: relative;
-    top: -50px;
-    border-radius: 50%;
-    width: 100px;
-    margin-bottom: -50px;
+.day{
+  background: #f5dc8a;
 }
-.no{
-  display: none;
+.night{
+  background: #9ebdec;
 }
