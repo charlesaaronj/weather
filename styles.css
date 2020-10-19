@@ -1,6 +1,12 @@
-.day{
-  background: #f5dc8a;
+
+body {
+  background: blue;
+  background: url('https://images.unsplash.com/photo-1542839764-7cbd13228589?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80');
+  background-size: 100%;
 }
-.night{
-  background: #9ebdec;
+.tile-style{
+  background: #ebebeb;
+  opacity: 0.95;
+  padding: 25px;
+  border-radius: 10px;
 }

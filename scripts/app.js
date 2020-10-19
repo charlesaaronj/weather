@@ -1,51 +1,74 @@
-const conditions = new Conditions();
-
+const weather = new Weather();
 const radioForm = document.querySelector('form');
 const current = document.querySelector('.current');
+const today = document.querySelector('.today');
 const time = document. querySelector('.time');
 const moreInfo = document. querySelector('.more-info');
 const body = document. querySelector('body');
-
+const parkImage = document. querySelector('.park-image');
 
 radioForm.addEventListener('submit', e => {
     e.preventDefault();
     const resort = document.getElementById('select').value;
     console.log(resort);
-    conditions.getWeather(resort)
-    .then(data => {
-        updateUI(data);
+    weather.getConditions(resort)
+    .then(dataConditions => {
+        updateConditions(dataConditions);
+    })
+    .catch(err => {
+        console.log(err);
+    });
+    weather.getForecast(resort)
+    .then(dataForecast => {
+        updateForecast(dataForecast);
     })
     .catch(err => {
         console.log(err);
     });
 });
-
-const updateUI = (data) => {
+const updateConditions = (dataConditions) => {
     current.innerHTML = `
-    <div class="label mt-5">Current Conditions</div>
+    <div class="tile-style">
+    <div class="is-size-6 has-text-weight-medium"><a href="${dataConditions.Link}" target="_blank">Current</a></div>
     <div class="is-size-1">
-      <span>${data.Temperature.Imperial.Value}</span>
+      <span>${dataConditions.Temperature.Imperial.Value}</span>
       <span>&deg;C</span>
       </div>
-    <div class="is-size-5">${data.WeatherText}</div>
+      <img class="my-0" src="/img/icons/${dataConditions.WeatherIcon}.svg">
+      <div class="is-size-6">${dataConditions.WeatherText}</div>
+      </div>
       `;
-    if(data.IsDayTime){
-        console.log('Daytime')
-        body.classList.add("day");
-        body.classList.remove("night");
-        time.innerHTML = `<div class="is-size-5">Day</div>`;
-     } else {
-        console.log('Nighttime')
-        body.classList.add("night");
-        body.classList.remove("day");
-        time.innerHTML = `<div class="is-size-5">Night</div>`;
+//     if(dataConditions.IsDayTime){
+//         console.log('Daytime')
+//         body.classList.add("day");
+//         body.classList.remove("night");
+//      } else {
+//         console.log('Nighttime')
+//         body.classList.add("night");
+//         body.classList.remove("day");
+//      };
      };
-    
-    moreInfo.innerHTML = `
-    <div class="is-size-6">
-    <a href="${data.Link}" target="_blank">
-    More Info</a></div>`;
-    
 
-};
+const updateForecast = (dataForecast) => {
+    console.log(dataForecast);
+    today.innerHTML = `
+    <div class="tile-style">
+    <div class="is-size-6 has-text-weight-medium"><a href="${dataForecast.DailyForecasts[0].Link}" target="_blank">Today</a></div>
+    <div class="is-size-2 mt-3">
+      <span>${dataForecast.DailyForecasts[0].Temperature.Minimum.Value}</span>
+      <span>&deg;C</span> - 
+      <span>${dataForecast.DailyForecasts[0].Temperature.Maximum.Value}</span>
+      <span>&deg;C</span>
+    </div>
+    <img class="my-0" src="/img/icons/${dataForecast.DailyForecasts[0].Day.Icon}.svg">
+    <div class="is-size-6 mx-6">
+      ${dataForecast.DailyForecasts[0].Day.IconPhrase} during day
+      </div>
+      <img class="my-0" src="/img/icons/${dataForecast.DailyForecasts[0].Night.Icon}.svg">
+      <div class="is-size-6"">
+      ${dataForecast.DailyForecasts[0].Night.IconPhrase} for tonight
+      </div>
+      </div>
+      `;
 
+}

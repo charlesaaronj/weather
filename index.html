@@ -9,34 +9,14 @@
   <title>Disney Parks Weather</title>
 </head>
 <body>
-
- <div class ="container has-text-centered">
-   <div class="columns">
-     <div class="column">
-    <div class="mx-3"> 
-    <div class="is-size-3 pt-6">Disney Parks Weather</div>
+ <div class ="container has-text-centered ">
+   <div class="columns mt-2">
+     <div class="column is-half is-offset-one-quarter">
+    <div class=" tile-style mx-3 m-0"> 
+    <div class="is-size-3">Disney Parks Weather</div>
       <div class="field">
         <form class="form" id="my-form" action="" method="POST">
-        <label class="label my-5">Select a Disney Resort:</label>
-        <!-- <div class="control">
-          <label class="radio">
-            <div class="my-3"><input type="radio" name="rsvp" value="2257551"> Walt Disney World
-          </label></div>
-          <label class="radio">
-            <div class="my-3"><input type="radio" name="rsvp" value="327150"> Disneyland
-          </label></div>
-          <label class="radio">
-            <div class="my-3"><input type="radio" name="rsvp" value="3424999"> Shanghai Disneyland
-          </label></div>
-          <label class="radio">
-            <div class="my-3"><input type="radio" name="rsvp" value="216947"> Tokyo Disneyland
-          </label></div>
-          <label class="radio">
-            <div class="my-3"><input type="radio" name="rsvp" value="1123451"> Hong Kong Disneyland
-          </label></div>
-          <label class="radio">
-            <div class="my-3"><input type="radio" name="rsvp" value="154118"> Disneyland Paris
-          </label></div> -->
+        <div class="is-size-6 my-5 has-text-weight-medium">Select a Disney Resort:</div>
           <div class="level">
             <div class="level-item">
           <div class="select is-medium">
@@ -54,12 +34,14 @@
       </div>
     </div>
   </div>
-        </form>
-      
-      <div class="current my-4"></div>
-      <div class="time my-4""></div>
-      <div class="more-info my-4""></div>
+  </form>
+  <section class="mx-3">
+    <div class="current my-2"></div>
+  </section>
+  <section class="mx-3">
+    <div class="today my-2"></div>
   </div>
+</section>
   <script src="scripts/forecast.js"></script>
   <script src="scripts/app.js"></script>
 </body>

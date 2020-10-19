@@ -1,21 +1,21 @@
-class Conditions {
+class Weather {
     constructor(){
-        this.apiKey = 'mRoY47MbBZ4snv1ND35KgnWXafVI5ImR';
-        this.weatherURI = 'https://dataservice.accuweather.com/currentconditions/v1/';
+        this.apiKey = 'xXdE6ee3pR133gS7zDSLHlxIzNncH6SE';
+        this.conditionsURI = 'https://dataservice.accuweather.com/currentconditions/v1/';
+        this.forecastURI = 'http://dataservice.accuweather.com/forecasts/v1/daily/1day/';
     }
-
-        async getWeather(resort){
-    
+        async getConditions(resort){
             const query = `${resort}?apikey=${this.apiKey}`;
-        
-            const response = await fetch(this.weatherURI + query);
-        
-            const data = await response.json();
-            
-            console.log('City key used to return current conditions')
-
-            console.log(data);
-
-            return data[0];
+            const response = await fetch(this.conditionsURI + query);     
+            const dataConditions = await response.json();
+            console.log(dataConditions);
+            return dataConditions[0];
+        }
+        async getForecast(resort){
+            const query = `${resort}?apikey=${this.apiKey}`;
+            const response = await fetch(this.forecastURI + query);     
+            const dataForecast = await response.json();
+            console.log(dataForecast);
+            return dataForecast;
         }
     }
