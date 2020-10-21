@@ -2,10 +2,7 @@ const weather = new Weather();
 const radioForm = document.querySelector('form');
 const current = document.querySelector('.current');
 const today = document.querySelector('.today');
-const time = document. querySelector('.time');
-const moreInfo = document. querySelector('.more-info');
-const body = document. querySelector('body');
-const parkImage = document. querySelector('.park-image');
+const body = document.querySelector('body');
 
 radioForm.addEventListener('submit', e => {
     e.preventDefault();
@@ -27,8 +24,26 @@ radioForm.addEventListener('submit', e => {
     });
 });
 const updateConditions = (dataConditions) => {
+    let time;
+    if(dataConditions.IsDayTime){
+        let time = `
+        <div class="is-size-6">
+   Daytime
+    </div>
+        `;
+        console.log(time);
+     } else {
+        let time = `
+        <div class="is-size-6">
+   Nighttime
+    </div>
+        `;
+        console.log(time);
+     };
+     console.log(time)
     current.innerHTML = `
     <div class="tile-style">
+    ${time}
     <div class="is-size-6 has-text-weight-medium"><a href="${dataConditions.Link}" target="_blank">Current</a></div>
     <div class="is-size-1">
       <span>${dataConditions.Temperature.Imperial.Value}</span>
@@ -38,19 +53,11 @@ const updateConditions = (dataConditions) => {
       <div class="is-size-6">${dataConditions.WeatherText}</div>
       </div>
       `;
-//     if(dataConditions.IsDayTime){
-//         console.log('Daytime')
-//         body.classList.add("day");
-//         body.classList.remove("night");
-//      } else {
-//         console.log('Nighttime')
-//         body.classList.add("night");
-//         body.classList.remove("day");
-//      };
-     };
-
+};
 const updateForecast = (dataForecast) => {
     console.log(dataForecast);
+    const timeStamp =  `${dataForecast.DailyForecasts[0].Date}`;
+    const friendlyDate = new Date(timeStamp);
     today.innerHTML = `
     <div class="tile-style">
     <div class="is-size-6 has-text-weight-medium"><a href="${dataForecast.DailyForecasts[0].Link}" target="_blank">Today</a></div>
@@ -68,6 +75,9 @@ const updateForecast = (dataForecast) => {
       <div class="is-size-6"">
       ${dataForecast.DailyForecasts[0].Night.IconPhrase} for tonight
       </div>
+      <div class="time-issued mt-5">
+        ${friendlyDate}
+        </div>
       </div>
       `;
 
