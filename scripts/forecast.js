@@ -1,6 +1,6 @@
 class Weather {
     constructor(){
-        this.apiKey = 'QtKwP84Fc1uCAe5Gg9RMJCATyDTfhmDv';
+        this.apiKey = 'insert key';
         this.conditionsURI = 'https://dataservice.accuweather.com/currentconditions/v1/';
         this.forecastURI = 'http://dataservice.accuweather.com/forecasts/v1/daily/1day/';
     }
