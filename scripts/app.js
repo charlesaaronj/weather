@@ -47,7 +47,7 @@ const updateConditions = (dataConditions) => {
     <div class="is-size-6 has-text-weight-medium"><a href="${dataConditions.Link}" target="_blank">Current</a></div>
     <div class="is-size-1">
       <span>${dataConditions.Temperature.Imperial.Value}</span>
-      <span>&deg;C</span>
+      <span>&deg;F</span>
       </div>
       <img class="my-0" src="/img/icons/${dataConditions.WeatherIcon}.svg">
       <div class="is-size-6">${dataConditions.WeatherText}</div>
@@ -63,9 +63,9 @@ const updateForecast = (dataForecast) => {
     <div class="is-size-6 has-text-weight-medium"><a href="${dataForecast.DailyForecasts[0].Link}" target="_blank">Today</a></div>
     <div class="is-size-2 mt-3">
       <span>${dataForecast.DailyForecasts[0].Temperature.Minimum.Value}</span>
-      <span>&deg;C</span> - 
+      <span>&deg;F</span> - 
       <span>${dataForecast.DailyForecasts[0].Temperature.Maximum.Value}</span>
-      <span>&deg;C</span>
+      <span>&deg;F</span>
     </div>
     <img class="my-0" src="/img/icons/${dataForecast.DailyForecasts[0].Day.Icon}.svg">
     <div class="is-size-6 mx-6">
