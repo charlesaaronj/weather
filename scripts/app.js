@@ -1,13 +1,21 @@
 const weather = new Weather();
 const radioForm = document.querySelector('form');
 const current = document.querySelector('.current');
+const time = document.querySelector('.time');
 const today = document.querySelector('.today');
 const body = document.querySelector('body');
+
 
 radioForm.addEventListener('submit', e => {
     e.preventDefault();
     const resort = document.getElementById('select').value;
-    console.log(resort);
+    weather.getTime(resort)
+    .then(dataTime => {
+        updateTime(dataTime);
+    })
+    .catch(err => {
+        console.log(err);
+    })
     weather.getConditions(resort)
     .then(dataConditions => {
         updateConditions(dataConditions);
@@ -23,41 +31,48 @@ radioForm.addEventListener('submit', e => {
         console.log(err);
     });
 });
+const updateTime = (dataTime) => {
+    let readableDate = moment.parseZone(dataTime.datetime).format('l LT');
+    let timeZone = dataTime.abbreviation;
+    time.innerHTML = `
+    <div class="tile-style">
+    <div class="is-size-6 has-text-weight-medium">
+    ${readableDate} ${timeZone}
+      </div>
+      </div>
+      `;
+};
 const updateConditions = (dataConditions) => {
-    let time;
+    var time;
     if(dataConditions.IsDayTime){
-        let time = `
-        <div class="is-size-6">
-   Daytime
+        var time = `
+        <div class="is-size-5 my-3">
+   Day Light
     </div>
         `;
-        console.log(time);
      } else {
-        let time = `
-        <div class="is-size-6">
-   Nighttime
+        var time = `
+        <div class="is-size-5 my-3">
+   Night
     </div>
         `;
-        console.log(time);
      };
-     console.log(time)
     current.innerHTML = `
     <div class="tile-style">
-    ${time}
     <div class="is-size-6 has-text-weight-medium"><a href="${dataConditions.Link}" target="_blank">Current</a></div>
+    ${time}
     <div class="is-size-1">
       <span>${dataConditions.Temperature.Imperial.Value}</span>
       <span>&deg;F</span>
       </div>
-      <img class="my-0" src="/img/icons/${dataConditions.WeatherIcon}.svg">
-      <div class="is-size-6">${dataConditions.WeatherText}</div>
+      <img class="my-0" src="http://charlesaaronj.com/apps/weather/img/icons/${dataConditions.WeatherIcon}.svg">
+      <div class="is-size-5">${dataConditions.WeatherText}</div>
       </div>
       `;
 };
 const updateForecast = (dataForecast) => {
-    console.log(dataForecast);
     const timeStamp =  `${dataForecast.DailyForecasts[0].Date}`;
-    const friendlyDate = new Date(timeStamp);
+    let friendlyDate = moment.parseZone(timeStamp).format('l LT');
     today.innerHTML = `
     <div class="tile-style">
     <div class="is-size-6 has-text-weight-medium"><a href="${dataForecast.DailyForecasts[0].Link}" target="_blank">Today</a></div>
@@ -67,16 +82,16 @@ const updateForecast = (dataForecast) => {
       <span>${dataForecast.DailyForecasts[0].Temperature.Maximum.Value}</span>
       <span>&deg;F</span>
     </div>
-    <img class="my-0" src="/img/icons/${dataForecast.DailyForecasts[0].Day.Icon}.svg">
-    <div class="is-size-6 mx-6">
+    <img class="my-0" src="http://charlesaaronj.com/apps/weather/img/icons/${dataForecast.DailyForecasts[0].Day.Icon}.svg">
+    <div class="is-size-5 mx-6">
       ${dataForecast.DailyForecasts[0].Day.IconPhrase} during day
       </div>
-      <img class="my-0" src="/img/icons/${dataForecast.DailyForecasts[0].Night.Icon}.svg">
-      <div class="is-size-6"">
-      ${dataForecast.DailyForecasts[0].Night.IconPhrase} for tonight
+      <img class="my-0" src="http://charlesaaronj.com/apps/weather/img/icons/${dataForecast.DailyForecasts[0].Night.Icon}.svg">
+      <div class="is-size-5"">
+      ${dataForecast.DailyForecasts[0].Night.IconPhrase} tonight
       </div>
-      <div class="time-issued mt-5">
-        ${friendlyDate}
+      <div class="is-size-6 mt-5">
+        Issued ${friendlyDate}
         </div>
       </div>
       `;
